@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.MemberListRepository">
+
+	<resultMap id="mMember" type="com.example.demo.entity.MMember">
+		<id property="accountId" column="account_id" />
+		<result property="name" column="name" />
+		<result property="furigana" column="furigana" />
+	</resultMap>
+	
+	<resultMap id="tMember" type="com.example.demo.entity.TMember">
+		<result property="accountId" column="account_id" />
+		<result column="team_position" property="teamPosition" />
+		<result column="birth_place" property="birthPlace" />
+		<result column="hobby" property="hobby" />
+		<result column="status_message" property="statusMessage" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+		
+
+
+	<select id="findAll" resultType="com.example.demo.entity.MMember">
+		SELECT
+		*
+		FROM
+		m_member
+	</select>
+
+	<select id="findbyId" resultType="com.example.demo.entity.MMember">
+		SELECT
+		*
+		FROM
+		m_member
+		WHERE
+		account_id = #{accountId};
+	</select>
+
+
+	<select id="findDetailbyAccountId" resultMap="MemberDetail">
+		SELECT
+		tm.*, mm.name, mm.furigana
+		FROM
+		t_member tm
+		LEFT JOIN
+		m_member mm ON tm.account_id = mm.account_id
+		WHERE
+		tm.account_id = #{accountId};
+	</select>
+
+	<delete id="deletebyAccountId">
+		DELETE FROM m_member WHERE account_id = #{accountId};
+	</delete>
+
+	<update id="updateMMember">
+		UPDATE
+		m_member
+		SET
+		name = #{name},
+		furigana = #{furigana}
+		WHERE
+		account_id = #{accountId};
+	</update>
+
+	<update id="updateTMember">
+		UPDATE
+		t_member
+		SET
+		team_position = #{teamPosition}
+		birth_place = #{birthPlace},
+		hobby = #{hobby},
+		status_message = #{statusMessage}
+		WHERE
+		account_id = #{accountId};
+	</update>
+
+	<select id="fileDownload" resultType="com.example.demo.entity.TMember">
+		SELECT
+		*
+		FROM
+		m_member
+		INTO OUTFILE
+		'メンバー一覧';
+	</select>
+
+</mapper>

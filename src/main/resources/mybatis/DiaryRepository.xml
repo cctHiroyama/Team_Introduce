@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.DiaryRepository">
+	<resultMap type="com.example.demo.entity.Diary" id="diary">
+		<id column="account_id" property="account_id"></id>
+		<id column="article_id" property="article_id"></id>
+		<result column="text" property="text"></result>
+		<result column="create_time" property="create_time"></result>
+	</resultMap>
+
+	<select id="findAll" resultType="com.example.demo.entity.Diary">
+		SELECT
+			*
+		FROM
+			diary
+	</select>
+	
+	<select id="findbyId" resultType="com.example.demo.entity.Diary">
+		SELECT
+			*
+		FROM
+			diary
+		WHERE
+			article_id = #{articleId};
+	</select>
+	
+	<select id="findbyArticle" resultType="com.example.demo.entity.Diary">
+		SELECT
+			*
+		FROM
+			diary
+		WHERE
+			article_id = #{articleId};
+	</select>
+	
+	<select id="findbyAccountId" resultType="com.example.demo.entity.Diary">
+		SELECT
+			*
+		FROM
+			diary
+		WHERE
+			account_id = #{accountId};
+	</select>
+	
+	<insert id="insert">
+	INSERT INTO
+		diary (title, text)
+	VALUES
+		(#{title}, #{text});
+  </insert>
+
+	<delete id="deletebyArticleId">
+        DELETE FROM diary WHERE article_id = #{articleId}; 
+    </delete>
+    
+    <update id="updateDiary">
+		UPDATE
+			diary
+		SET
+			article_id = #{article_id},
+			text = #{text},
+			title = #{title}
+		WHERE
+			article_id = #{articleId}; 
+	</update>
+
+</mapper>

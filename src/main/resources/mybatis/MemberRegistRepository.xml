@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.example.demo.repository.MemberRegistRepository">
+  <resultMap type="com.example.demo.entity.MMember" id="mMember">
+	<id column="account_id" property="account_id"></id>
+	<result column="name" property="name"></result>
+	<result column="team_position" property="team_position"></result>
+	<result column="update_time" property="update_time"></result>
+  </resultMap>
+ 
+  <insert id="save">
+	INSERT INTO
+		m_member (name, furigana)
+	VALUES
+		(#{name}, #{furigana});
+  </insert>
+</mapper>
