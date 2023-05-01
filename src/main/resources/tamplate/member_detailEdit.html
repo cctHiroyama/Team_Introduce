@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title th:text="${title}">詳細情報変更</title>
+	<link th:href="@{/assets/css/member_edit.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<form th:method="post" th:object="${detailEdit}"
+		th:action="@{/member_detailEdit/{accountId}(accountId=*{accountId})}">
+
+		<div class="card">
+
+			<h1 class="title">詳細情報変更</h1>
+
+			<div class="card-body">
+
+				<div class="form-group">
+					<div style="display: block;">
+						<label for="inputbirthPlace" class="member-edit-item">出身地</label>
+					</div>
+					<div style="display: block;">
+						<input input type="text" th:field="*{birthPlace}" class="member-edit-form-control-second"
+							id="birthPlace" name="birthPlace">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div style="display: block;">
+						<label for="inputHobby" class="member-edit-item">趣味</label>
+					</div>
+					<div style="display: block;">
+						<input input type="text" th:field="*{hobby}" class="member-edit-form-control-second" id="hobby"
+							name="hobby">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div style="display: block;">
+						<label for="inputstatusMessage" class="member-edit-item">ひとこと</label>
+					</div>
+					<div style="display: block;">
+						<input input type="text" th:field="*{statusMessage}" class="member-edit-form-control-second"
+							id="statusMessage" name="statusMessage">
+					</div>
+				</div>
+
+				<div class="card-footer">
+					<a th:href="@{/member_detail/{accountId}(accountId=*{accountId})}" class="btn btn-cancel">キャンセル</a>
+					<button type="submit" class="btn btn-change">変更</button>
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</form>
+
+</body>
+
+</html>

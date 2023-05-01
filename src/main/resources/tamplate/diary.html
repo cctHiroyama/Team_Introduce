@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宮島チーム日記</title>
+	<link th:href="@{/assets/css/diary.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<header>
+		<nav id="menu" class="menu" style>
+			<ul>
+				<li>
+					<a th:href="@{/diary_edit/{articleId}(articleId=*{articleId})}">Edit</a>
+				</li>
+				<li>
+					<a th:href="@{/diary/{articleId}/delete(articleId=*{articleId})}" data-open="deleteModal">Delete</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+
+		<article>
+
+			<div class="area area-diary deco-bg">
+				<div>
+					<div class="title">
+						<p th:text="${diary.title}" id="title"></p>
+					</div>
+					<hr>
+					<div class="date">
+						<p th:text="${diary.createTime}" id="createTime"></p>
+					</div>
+
+					<div class="body">
+						<p th:text="${diary.text}" id="text"></p>
+					</div>
+				</div>
+
+			</div>
+
+		</article>
+
+	</main>
+</body>
+
+</html>

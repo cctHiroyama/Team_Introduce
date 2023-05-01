@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<title>メンバー詳細</title>
+	<link th:href="@{/assets/css/diary.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<header>
+		<h2>ditail</h2>
+		<nav id="menu" class="menu" style>
+			<ul>
+				<li>
+					<a th:href="@{/}">Back</a>
+				</li>
+				<li>
+					<a th:href="@{/member_detailEdit/{accountId}(accountId=*{accountId})}">Edit</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+
+		<article>
+
+			<form th:action="@{member_detail}" th:object="${memberListForm.memberDetail}" method="post">
+
+				<dl class="inline">
+					<dt>名前</dt>
+					<dd th:text="${basicInfo.name}" id="name"></dd>
+				</dl>
+
+				<dl class="inline">
+					<dt>ふりがな</dt>
+					<dd th:text="${basicInfo.furigana}" id="furigana"></dd>
+				</dl>
+
+				<dl class="inline">
+					<dt>チーム役割</dt>
+					<dd th:text="${detailInfo.teamPosition}" id="teamPosition"></dd>
+				</dl>
+
+				<dl class="inline">
+					<dt>出身地</dt>
+					<dd th:text="${detailInfo.birthPlace}" id="birthPlace"></dd>
+				</dl>
+
+				<dl class="inline">
+					<dt>趣味</dt>
+					<dd th:text="${detailInfo.hobby}" id="hobby"></dd>
+				</dl>
+
+				<dl class="inline">
+					<dt>ひとこと</dt>
+					<dd th:text="${detailInfo.statusMessage}" id="statusMessage"></dd>
+				</dl>
+				</td>
+			</form>
+
+
+		</article>
+
+	</main>
+
+</body>
+
+</html>

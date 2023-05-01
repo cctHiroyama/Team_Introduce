@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>詳細情報登録</title>
+</head>
+
+<body>
+	<div>
+		<form th:action="@{/member_detailRegist/{accountId}(accountId=*{accountId})}" th:object="${memberDetailRegistForm}" th:method="post">
+			<div th:insert="member_detailRegist"></div>
+		</form>
+	</div>
+</body>
+
+</html>

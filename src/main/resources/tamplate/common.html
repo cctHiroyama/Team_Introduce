@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>メンバー情報登録</title>
+</head>
+
+<body>
+	<div>
+		<form th:action="@{/member_regist}" th:object="${memberRegistForm}" method="post">
+			<div th:insert="member_regist"></div>
+		</form>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>日記編集</title>
+	<link th:href="@{/assets/css/diary.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<header>
+		<h2>日記編集</h2>
+		<nav id="menu" class="menu" style>
+			<ul>
+				<li>
+					<a th:href="@{/diary}">Back</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="area area-diary deco-bg">
+
+			<form　th:method="post" th:object="${diaryEdit}"
+				th:action="@{/diary_edit/{articleId}(articleId=*{articleId})}" class="form-block">
+				<dt style="margin-top: 20px;">タイトル</dt>
+				<dd><input type="text" th:field="*{title}" id="title" name="title"></dd>
+				<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red" class="error">
+				</p>
+
+				<dt style="margin-top: 20px;">内容</dt>
+				<dd><textarea th:field="*{text}" id="text" name="text"></textarea></dd>
+				<p th:if="${#fields.hasErrors('text')}" th:errors="*{text}" style="color: red" class="error">
+				</p>
+
+				<button type="submit" style="margin-top: 20px;">更新</button>
+			</form>
+		</div>
+</body>
+
+</html>

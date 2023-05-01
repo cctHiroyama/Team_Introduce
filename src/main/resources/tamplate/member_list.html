@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title th:text="${title}">宮島チーム</title>
+	<link th:href="@{/assets/css/member_list.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div class="container">
+
+		<div>
+			<h1 class="title">宮島チームメンバー</h1>
+			<span style="position: relative; float: right;">
+				<a th:href="@{/member_regist}" id="add" class="btn btnRegist">新規メンバー登録</a>
+			</span>
+		</div>
+
+		<div class="popup">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col" class="columnName">名前</th>
+						<th scope="col" class="columnName">チーム役割</th>
+						<th scope="col" class="columnName">更新日時</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="members:${memberList}" th:object="${members}" class="align-middle popup">
+						<td th:text="*{name}" id="name" class="columnItem"></td>
+						<td th:text="*{teamPosition}" id="teamPosition" class="columnItem"></td>
+						<td th:text="*{updateTime}" id="updateTime" class="columnItem"></td>
+						<td>
+							<a th:href="@{/member_detail/{accountId}(accountId=*{accountId})}"
+								class="btn btn-detail">詳細</a>
+							<a th:href="@{/member_basicEdit/{accountId}(accountId=*{accountId})}"
+								class="btn btn-edit">編集</a>
+							<a th:href="@{/member_list/{accountId}/delete(accountId=*{accountId})}"
+								class="btn btn-delete" data-open="deleteModal">削除</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<table class="popup-text">
+			<tr th:each="ditail:${tMember}" th:object="${tMember}">
+				<td><label class="popup-item">出身地</label></td>
+				<td>
+					<!-- <span th:text="*{birthPlace}" class="popup-detail"></span> !-->
+				</td>
+			</tr>
+
+			<tr style="display: flex;">
+				<td><label class="popup-item">趣味</label></td>
+				<td>
+					<!-- <span th:text="*{hobby}" class="popup-detail"></span> !-->
+				</td>
+			</tr>
+
+			<tr style="display: flex;">
+				<td><label class="popup-item">ひとこと</label></td>
+				<td>
+					<!-- <span th:text="*{statusMessage}" class="popup-detail"></span> !-->
+				</td>
+			</tr>
+				<a th:href="@{/member_detailEdit/{accountId}(accountId=*{accountId})}" class="btn btn-edit">編集</a>
+		</table>
+	</div>
+
+	<section layout:fragment="pagescript">
+		<script th:src="@{/assets/js/delete_modal.js}"></script>
+	</section>
+
+</body>
+
+</html>

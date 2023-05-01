@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宮島チーム紹介</title>
+	<link th:href="@{/assets/css/team_introduce.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<header>
+		<h1>Miyajima Team</h1>
+		<nav id="menu" class="menu" style>
+			<ul>
+				<li>
+					<a th:href="@{#MENU_1}">members</a>
+				</li>
+				<li>
+					<a th:href="@{#MENU_2}" id="add">diary</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<article id="MENU_1">
+			<h2>members</h2>
+			<div class="add_button">
+				<ul>
+					<li>
+						<a th:href="@{/member_regist}" id="add">add new</a>
+					</li>
+				</ul>
+			</div>
+
+			<table>
+				<tr th:each="members:${memberList}" th:object="${members}">
+					<td class="name">
+						<ul>
+							<li>
+								<a th:href="@{/member_detail/{accountId}(accountId=*{accountId})}" th:text="*{name}" id="name"></a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</article>
+
+		<article id="MENU_2">
+			<h2>diary</h2>
+			<div>
+				<div class="add_button">
+					<ul>
+						<li>
+							<a th:href="@{/diary_post}" id="add">new post</a>
+						</li>
+					</ul>
+				</div>
+
+				<div th:each="diary : ${diaries}" th:object="${diary}">
+					<dl class="border inline">
+						<dt th:text="*{createTime}" id="createTime"></dt>
+						<a th:href="@{/diary/{articleId}(articleId=*{articleId})}" style="display: contents;">
+							<dd th:text="*{title}" id="title"></dd>
+						</a>
+					</dl>
+				</div>
+				
+			</div>
+		</article>
+
+	</main>
+
+</body>
+
+</html>

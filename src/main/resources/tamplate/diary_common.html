@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>新規投稿</title>
+</head>
+
+<body>
+	<div>
+		<form th:action="@{/diary_post}" th:object="${diaryForm}" method="post">
+			<div th:insert="diary_post"></div>
+		</form>
+	</div>
+</body>
+
+</html>

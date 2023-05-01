@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title th:text="${title}">詳細情報変更</title>
+	<link th:href="@{/assets/css/member_edit.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<form th:method="post" th:object="${basicEdit}"
+		th:action="@{/member_basicEdit/accountId={accountId}(accountId=*{accountId})}">
+		
+	<div class="card">
+		
+		<h1 class="title">基本情報変更</h1>
+
+		<div class="card-body">
+
+			<div class="form-group">
+				<div style="display: block;">
+					<label for="inputaccountId" class="member-edit-item">ID</label>
+				</div>
+				<div style="display: block;">
+					<input th:field="*{accountId}" class="member-edit-form-control" id="accountId" name="accountId"
+						readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div style="display: block;">
+					<label for="inputName" class="member-edit-item">名前</label>
+				</div>
+				<div style="display: block;">
+					<input type="text" th:field="*{name}" class="member-edit-form-control-second" id="name"
+						name="name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div style="display: block;">
+					<label for="inputteamPosition" class="member-edit-item">チーム役割</label>
+				</div>
+				<div style="display: block;">
+					<input input type="text" th:field="*{teamPosition}" class="member-edit-form-control-second"
+						id="teamPosition" name="teamPosition">
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<a th:href="@{/}" class="btn btn-cancel">キャンセル</a>
+				<button type="submit" class="btn btn-change">変更</button>
+			</div>
+
+		</div>
+
+	</div>
+
+	</form>
+
+</body>
+
+</html>

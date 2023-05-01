@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${title}">詳細情報登録</title>
+	<link th:href="@{/assets/css/diary.css}" rel="stylesheet">
+	<link th:href="@{/webjars/AdminLTE/3.2.0/dist/css/adminlte.min.css}" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:fragment="member_regist">
+		<header>
+			<h2>detail add</h2>
+			<nav id="menu" class="menu" style>
+				<ul>
+					<li>
+						<a th:href="@{/diary}">Back</a>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="area area-diary deco-bg">
+				<form class="form-block">
+					<dt style="margin-top: 20px;">チーム役割</dt>
+					<dd><input type="text" name="teamPosition" th:value="*{teamPosition}"></dd>
+					<p th:if="${#fields.hasErrors('teamPosition')}" th:errors="*{teamPosition}" style="color: red" class="error">
+					</p>
+
+					<dt style="margin-top: 20px;">出身地</dt>
+					<dd><input type="text" name="birthPlace" th:value="*{birthPlace}"></dd>
+					<p th:if="${#fields.hasErrors('birthPlace')}" th:errors="*{text}" style="color: red" class="error">
+					</p>
+					
+					<dt style="margin-top: 20px;">趣味</dt>
+					<dd><input type="text" name="hobby" th:value="*{hobby}" id="text"></dd>
+					<p th:if="${#fields.hasErrors('hobby')}" th:errors="*{hobby}" style="color: red" class="error">
+					</p>
+					
+					<dt style="margin-top: 20px;">ひとこと</dt>
+					<dd><input type="text" name="statusMessage" th:value="*{statusMessage}" id="text"></dd>
+					<p th:if="${#fields.hasErrors('statusMessage')}" th:errors="*{statusMessage}" style="color: red" class="error">
+					</p>
+
+					<button type="submit" style="margin-top: 20px;">Regist</button>
+				</form>
+			</div>
+</body>
+
+</html>
