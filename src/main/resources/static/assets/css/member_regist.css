@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.member-regist-section {
+	width: 100%;
+	padding-bottom: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-footer {
+	background-color: white;
+    border-top: none;
+    margin-top: 30px;
+}
+
+
+.member-regist-item {
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 20px;
+	color: rgba(0, 0, 0, 0.8);
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.member-regist-form-control {
+	padding: 7px 8px;
+	width: 328px;
+	background: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 4px;
+}
+
+.error {
+	font-size: medium;
+} 
+
+.btn-cancel {
+	font-size: 13px;
+	color:black;
+	border-radius: 20px;
+	text-decoration: none;
+}
+.btn-regist {
+	font-size: 13px;
+	width: 120px;
+	height: 32px;
+	background: #87cefa;
+	color:white;
+	border-radius: 20px;
+	margin-left: 20px;
+	border: none;
+	outline: none;
+}
